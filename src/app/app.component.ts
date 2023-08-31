@@ -6,5 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'newToDo';
+  title :string = 'newToDo';
+
+  taskText: string | undefined;
+  tasks: string[] = [];
+  
+  saveTask() :void {
+    if(!this.taskText) {
+      alert('No task to save');
+      return;     
+    }
+    this.tasks.push(this.taskText);
+    this.taskText = undefined;
+  }
 }

@@ -5,11 +5,13 @@
       <input placeholder="+ New Task" [(ngModel)]="taskText" (keyup.enter)="saveTask()">
       <button class="text-white bg-blue-950 px-2 rounded" (click)="saveTask()">Add Task</button>
     </div>
+    <div *ngIf="error">{{error}}</div>
 
     <div class="overflow-auto">
       <div *ngFor="let task of tasks">
         <div class="flex flex-row space-x-2">
           <input type="checkbox">
+
           <div>{{task}}</div>
         </div>
       </div>

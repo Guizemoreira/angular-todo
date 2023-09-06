@@ -10,13 +10,17 @@ export class AppComponent {
 
   taskText: string | undefined;
   tasks: string[] = [];
+  error: string | undefined;
   
   saveTask() :void {
+    this.error = undefined;
     if(!this.taskText) {
-      alert('No task to save');
+      this.error = 'No task to save';
       return;     
     }
     this.tasks.push(this.taskText);
     this.taskText = undefined;
+
+    
   }
 }

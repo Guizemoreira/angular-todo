@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +21,24 @@ export class AppComponent {
     this.tasks.push(this.taskText);
     this.taskText = undefined;
 
-    
+    //LocalStorage
+    window.localStorage.setItem('todo-list', JSON.stringify(this.tasks));
+
   }
+
+  ngOnInit(){
+    const storedTasks = localStorage.getItem('tasks');
+    if (storedTasks) {
+      this.tasks = JSON.parse(storedTasks);
+    }
+  }
+
+
+  onCompleteTask(){
+    this.tasks.filter(task => task.completed);
+  }
+  onNoCompleteTask(){
+    this.tasks.filter(task => !task.completed);
+  }
+
 }

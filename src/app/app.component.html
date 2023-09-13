@@ -11,7 +11,7 @@
       <div *ngFor="let task of tasks">
         <div class="flex flex-row space-x-2">
           <input id="check" type="checkbox" [(ngModel)]="task.completed" (change)="onCompleteTask(tasks)"/>
-          <div>{{task}}</div>
+          <div>{{task.text}}</div>
         </div>
       </div>
     </div>

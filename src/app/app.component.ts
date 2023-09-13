@@ -11,20 +11,6 @@ export class AppComponent implements OnInit{
   taskText: string | undefined;
   tasks: string[] = [];
   error: string | undefined;
-  
-  saveTask() :void {
-    this.error = undefined;
-    if(!this.taskText) {
-      this.error = 'No task to save';
-      return;     
-    }
-    this.tasks.push(this.taskText);
-    this.taskText = undefined;
-
-    //LocalStorage
-    window.localStorage.setItem('todo-list', JSON.stringify(this.tasks));
-
-  }
 
   ngOnInit(){
     const storedTasks = localStorage.getItem('tasks');
@@ -40,5 +26,22 @@ export class AppComponent implements OnInit{
   onNoCompleteTask(){
     this.tasks.filter(task => !task.completed);
   }
+  
+  saveTask() :void {
+    this.error = undefined;
+    if(!this.taskText) {
+      this.error = 'No task to save';
+      return;     
+    }
+    //this.tasks.push(this.taskText);
+    this.tasks.push({text: this.taskText, completed: false});
+    this.taskText = undefined;
+
+    //LocalStorage
+    window.localStorage.setItem('tasks', JSON.stringify(this.tasks));
+
+  }
+
+  
 
 }

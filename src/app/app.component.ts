@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Task } from './interface/interface';
 
 @Component({
   selector: 'app-root',
@@ -21,10 +22,10 @@ export class AppComponent implements OnInit{
 
 
   onCompleteTask(){
-    this.tasks.filter(task => task.completed);
+    this.tasks.filter(task => this.tasks.completed);
   }
   onNoCompleteTask(){
-    this.tasks.filter(task => !task.completed);
+    this.tasks.filter(task => !this.tasks.completed);
   }
   
   saveTask() :void {
@@ -34,7 +35,7 @@ export class AppComponent implements OnInit{
       return;     
     }
     //this.tasks.push(this.taskText);
-    this.tasks.push({text: this.taskText, completed: false});
+    this.tasks.push({text: this.tasks, completed: false});
     this.taskText = undefined;
 
     //LocalStorage
